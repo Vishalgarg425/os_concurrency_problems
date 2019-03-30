@@ -36,16 +36,16 @@ void *reader()
 };
 
 int main(){
-
-   int size=BUFFER_SIZE;
-   sem_init(&havetowait, 1);
-   sem_init(&mutex,1);
+    srand(time(0));
+    int size=BUFFER_SIZE;
+    sem_init(&havetowait, 1);
+    sem_init(&mutex,1);
 
    
     printf("start");
 
     pthread_t prod_t[(int)NO_WRIT_THREADS];
-   for(int i=0;i<NO_WRIT_THREADS;i++)
+    for(int i=0;i<NO_WRIT_THREADS;i++)
     {
       pthread_create(&prod_t[i], NULL, writer, NULL);
     }

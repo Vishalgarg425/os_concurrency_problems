@@ -18,8 +18,7 @@ int last_pointer;
 
 void *producer()
 {   
-    int g1=rand()%5;
-    sleep(g1);
+    sleep(rand()%5);
     int value=rand()%113;
     item np;
     np.val=value;
@@ -57,6 +56,7 @@ void *consumer()
 };
 
 int main(){
+    srand(time(0));
    last_pointer=0;
    int size=BUFFER_SIZE;
    sem_init(&empty, 0);
@@ -64,7 +64,7 @@ int main(){
    sem_init(&mutex,1);
 
    
-    printf("start");
+    printf("start\n");
 
     pthread_t prod_t[(int)NO_PROD_THREADS];
    for(int i=0;i<NO_PROD_THREADS;i++)
