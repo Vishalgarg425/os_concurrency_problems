@@ -119,15 +119,18 @@ int main(){
     //   pthread_join(prod_t[i], NULL);
     //   pthread_join(agnt_t[i], NULL);
     // }
-    pthread_t thread_id[4];
-    pthread_create(&thread_id[0], NULL, ChSmokrA, NULL);
-    pthread_create(&thread_id[1], NULL, ChSmokrB, NULL);
-    pthread_create(&thread_id[2], NULL, ChSmokrC, NULL);
-    pthread_create(&thread_id[3], NULL, agent, NULL);
+    pthread_t smkra_t;
+    pthread_t smkrb_t;
+    pthread_t smkrc_t;
+    pthread_t agent_t;
+    pthread_create(&smkra_t, NULL, ChSmokrA, NULL);
+    pthread_create(&smkrb_t, NULL, ChSmokrB, NULL);
+    pthread_create(&smkrc_t, NULL, ChSmokrC, NULL);
+    pthread_create(&agent_t, NULL, agent, NULL);
 
-  pthread_join(thread_id[0], NULL);
-  pthread_join(thread_id[1], NULL);
-  pthread_join(thread_id[3], NULL);
-  pthread_join(thread_id[2], NULL);
+  pthread_join(smkra_t, NULL);
+  pthread_join(smkrb_t, NULL);
+  pthread_join(smkrc_t, NULL);
+  pthread_join(agent_t, NULL);
         printf("end");
 }
